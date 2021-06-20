@@ -36,8 +36,9 @@ public class Pokemon {
 
         }
     }
-
-    public void createPokemonFromJSON(JSONObject pokeJSON) throws JSONException {
+    
+    public Pokemon(JSONObject pokeJSON) throws JSONException{
+        this.moves = new ArrayList<>();
         this.name = pokeJSON.getJSONArray("forms").getJSONObject(0).getString("name");
         this.ability = pokeJSON.getJSONArray("abilities").getJSONObject(0).getJSONObject("ability").getString("name");
         JSONArray movesArray = pokeJSON.getJSONArray("moves");

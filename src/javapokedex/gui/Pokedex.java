@@ -55,6 +55,7 @@ public class Pokedex extends javax.swing.JFrame {
         pokeSubmitButton = new javax.swing.JButton();
         pokeNameInput = new javax.swing.JTextField();
         pokeNameLabel = new javax.swing.JLabel();
+        movesListLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,6 +78,7 @@ public class Pokedex extends javax.swing.JFrame {
         );
 
         pokeMovesArea.setColumns(20);
+        pokeMovesArea.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
         pokeMovesArea.setRows(5);
         pokeMoves.setViewportView(pokeMovesArea);
 
@@ -103,9 +105,15 @@ public class Pokedex extends javax.swing.JFrame {
 
         pokeDetailsPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        pokeAbility.setFont(new java.awt.Font("Yu Gothic", 0, 18)); // NOI18N
+        pokeAbility.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pokeAbility.setText("Ability");
+        pokeAbility.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
-        pokeName.setText("Pokemon Name");
+        pokeName.setFont(new java.awt.Font("Yu Gothic", 0, 24)); // NOI18N
+        pokeName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pokeName.setText("Name");
+        pokeName.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
         javax.swing.GroupLayout pokeDetailsPanelLayout = new javax.swing.GroupLayout(pokeDetailsPanel);
         pokeDetailsPanel.setLayout(pokeDetailsPanelLayout);
@@ -114,16 +122,18 @@ public class Pokedex extends javax.swing.JFrame {
             .addGroup(pokeDetailsPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pokeDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pokeName)
-                    .addComponent(pokeAbility))
-                .addContainerGap(53, Short.MAX_VALUE))
+                    .addGroup(pokeDetailsPanelLayout.createSequentialGroup()
+                        .addComponent(pokeAbility)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(pokeName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         pokeDetailsPanelLayout.setVerticalGroup(
             pokeDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pokeDetailsPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pokeName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(65, 65, 65)
                 .addComponent(pokeAbility)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -169,6 +179,12 @@ public class Pokedex extends javax.swing.JFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
+        movesListLabel.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
+        movesListLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        movesListLabel.setText("Moves");
+        movesListLabel.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        movesListLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -178,10 +194,12 @@ public class Pokedex extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(pokeDetailsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pokeDetailsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(pokeMoves, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(pokeMoves, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                            .addComponent(movesListLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
                         .addComponent(pokePicturePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(pokeInputPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -194,9 +212,12 @@ public class Pokedex extends javax.swing.JFrame {
                 .addComponent(pokeInputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pokeMoves, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
                     .addComponent(pokeDetailsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pokePicturePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pokePicturePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(movesListLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pokeMoves, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -211,9 +232,8 @@ public class Pokedex extends javax.swing.JFrame {
         try {
             JSONObject myResponse = getPokeResponse(pokeNameInput.getText());
             if (myResponse != null) {
-                Pokemon p = new Pokemon();
-                p.createPokemonFromJSON(myResponse);
-                pokeName.setText("Pokemon: " + capitalise(p.getName()));
+                Pokemon p = new Pokemon(myResponse);
+                pokeName.setText(capitalise(p.getName()));
                 pokeAbility.setText("Ability: " + capitalise(p.getAbility()));
                 String moveString = "";
                 for (int i = 0; i < p.getMoves().size(); i++) {
@@ -269,6 +289,7 @@ public class Pokedex extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel movesListLabel;
     private javax.swing.JLabel pokeAbility;
     private javax.swing.JPanel pokeDetailsPanel;
     private javax.swing.JPanel pokeInputPanel;
