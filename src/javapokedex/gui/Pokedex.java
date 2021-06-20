@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javapokedex;
+package javapokedex.gui;
 
 import java.awt.Image;
 import java.io.BufferedReader;
@@ -18,8 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JTextArea;
+import objs.Pokemon;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -215,6 +214,29 @@ public class Pokedex extends javax.swing.JFrame {
         try {
             JSONObject myResponse = getPokeResponse(pokeNameInput.getText());
             if (myResponse != null) {
+                Pokemon p = new Pokemon();
+                p.createPokemonFromJSON(myResponse);
+                pokeName.setText("Pokemon: " + capitalise(p.getName()));
+                pokeAbility.setText("Ability: " + capitalise(p.getAbility()));
+                String moveString = "";
+                for (int i = 0; i < p.getMoves().size(); i++) {
+                    moveString = capitalise(p.getMoves().get(i));
+                    pokeMovesArea.append(moveString);
+                    pokeMovesArea.append("\n");
+                }
+                pokePicture.setIcon(new ImageIcon(p.getImage()));
+            } else {
+                pokeName.setText("POKEMON");
+                pokeAbility.setText("NOT \n FOUND");
+            }
+
+        } catch (JSONException | IOException ex) {
+            Logger.getLogger(Pokedex.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        /*try {
+            JSONObject myResponse = getPokeResponse(pokeNameInput.getText());
+            if (myResponse != null) {
                 pokeName.setText("Pokemon: " + capitalise(myResponse.getJSONArray("forms").getJSONObject(0).getString("name")));
                 pokeAbility.setText("Ability: " + capitalise(myResponse.getJSONArray("abilities").getJSONObject(0).getJSONObject("ability").getString("name")));
                 JSONArray moves = myResponse.getJSONArray("moves");
@@ -241,7 +263,7 @@ public class Pokedex extends javax.swing.JFrame {
 
         } catch (JSONException | IOException ex) {
             Logger.getLogger(Pokedex.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
     }//GEN-LAST:event_pokeSubmitButtonActionPerformed
 
     /**
