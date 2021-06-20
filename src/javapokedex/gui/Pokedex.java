@@ -5,7 +5,6 @@
  */
 package javapokedex.gui;
 
-import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -16,10 +15,8 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import objs.Pokemon;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -234,36 +231,6 @@ public class Pokedex extends javax.swing.JFrame {
             Logger.getLogger(Pokedex.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        /*try {
-            JSONObject myResponse = getPokeResponse(pokeNameInput.getText());
-            if (myResponse != null) {
-                pokeName.setText("Pokemon: " + capitalise(myResponse.getJSONArray("forms").getJSONObject(0).getString("name")));
-                pokeAbility.setText("Ability: " + capitalise(myResponse.getJSONArray("abilities").getJSONObject(0).getJSONObject("ability").getString("name")));
-                JSONArray moves = myResponse.getJSONArray("moves");
-                String movesString = "";
-                for (int i = 0; i < moves.length(); i++) {
-                    JSONObject move = moves.getJSONObject(i);
-                    movesString = capitalise(move.getJSONObject("move").getString("name"));
-                    pokeMovesArea.append(movesString);
-                    pokeMovesArea.append("\n");
-                }
-                String artworkString = myResponse.getJSONObject("sprites").getJSONObject("other").getJSONObject("official-artwork").getString("front_default");
-                Image artwork = null;
-                try {
-                    URL url = new URL(artworkString);
-                    artwork = ImageIO.read(url);
-                } catch (IOException e) {
-
-                }
-                pokePicture.setIcon(new ImageIcon(artwork));
-            } else {
-                pokeName.setText("POKEMON");
-                pokeAbility.setText("NOT \n FOUND");
-            }
-
-        } catch (JSONException | IOException ex) {
-            Logger.getLogger(Pokedex.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
     }//GEN-LAST:event_pokeSubmitButtonActionPerformed
 
     /**
